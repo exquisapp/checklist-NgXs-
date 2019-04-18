@@ -1,0 +1,20 @@
+.list-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.add-button{
+    background: #7f0082;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    color: #fff;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
