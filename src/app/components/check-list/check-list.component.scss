@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
 }
+
 .add-button{
     background: #7f0082;
     height: 60px;
@@ -42,4 +43,22 @@
     margin-left: 10vw;
     margin-top: 10vh;
     border-radius: 25px;
+}
+
+.each-temp-list{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .temp-content{
+        margin-right: 12px;
+    }
+    button{
+        padding: 0 !important;
+        margin: 0 !important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
 }
