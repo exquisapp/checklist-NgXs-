@@ -11,9 +11,12 @@ import * as ListActions from './../../store/actions';
 })
 export class CheckListComponent implements OnInit {
 
-  // @Select()
-  // list: Observable<any>;
+  //refactor to selector concept later
   public list;
+  public showAddList = false;
+  public temp_list = [];
+  public currentTitle;
+  public currentContent;
 
   constructor(private store: Store) { }
 
@@ -23,6 +26,13 @@ export class CheckListComponent implements OnInit {
       this.list = data;
       console.log(this.list);
     })
+  }
+
+  _showAddList(){
+    this.showAddList = true;
+  }
+  _hideAll(){
+    this.showAddList = false;
   }
 
 }

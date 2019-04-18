@@ -4,6 +4,25 @@
   <app-each-list></app-each-list>
 </section>
 
-<div class="add-button">
+<div class="add-button" (click) = "_showAddList()">
   <i class="fas fa-plus"></i>
 </div>
+
+<ng-container *ngIf="showAddList">
+  <div class="overlay" (click)="_hideAll()">  
+  </div>
+
+  <div class="add-list-form">
+    <div class="input-field">
+      <input  id="title" type="text" class="list-title">
+      <label for="title">Title</label>
+    </div>
+    <div class="input-field">
+        <input id="content" type="text" class="list-title">
+        <label for="content">Content</label>
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+          Add
+        </button>
+      </div>
+  </div>
+</ng-container>

@@ -5,7 +5,19 @@ import * as ListActions from '../actions';
 
 @State<any>({
     name: 'checkList',
-    defaults: []
+    defaults: {
+        allList: [
+            {
+                title : 'hello list',
+                list: [
+                    {
+                        name: 'one hello list',
+                        content: 'This is one hello list'
+                    }
+                ]
+            }
+        ]
+    }
 })
 export class ListState{
     @Action(ListActions.AddList)
