@@ -35,9 +35,11 @@ export class CheckListComponent implements OnInit {
     this.showAddList = false;
   }
   pushContent(){
-    console.log(this.currentTitle);
-    this.temp_list.push({ content: this.currentContent, id: this.currentContent.replace(/\s/g,'')});
-    this.currentContent = '';
+    if (this.currentTitle && this.currentContent){
+      this.temp_list.push({ content: this.currentContent, id: this.currentContent.replace(/\s/g,'')});
+      this.currentContent = '';
+    }
+    
   }
   removeContent(id){
     id = id.replace(/\s/g,'');

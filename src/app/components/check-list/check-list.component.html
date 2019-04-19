@@ -23,7 +23,7 @@
         <button (click)="pushContent()" class="btn waves-effect waves-light" type="submit" name="action">
             <i class="fas fa-plus"></i>
         </button>
-
+      </div>
         <div class="current-temp-list" *ngIf="temp_list.length > 0">
           <h3>Currently Added List</h3>
           <ng-container *ngFor="let x of temp_list">
@@ -36,7 +36,7 @@
                   </button>
             </div>
           </ng-container>
-        </div>
+        
       </div>
   </div>
 </ng-container>
