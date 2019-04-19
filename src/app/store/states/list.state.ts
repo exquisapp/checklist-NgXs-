@@ -1,33 +1,37 @@
 
-import { State, Action, Selector, Select } from '@ngxs/store';
+import { State, Action, Selector, StateContext } from '@ngxs/store';
 
 import * as ListActions from '../actions';
 
-@State<any>({
+export interface ListModel {
+    id: string;
+    content: string;
+}
+
+export interface AllListModel {
+    title: string;
+    list: ListModel[];
+}
+export interface ListStateModel {
+    allList: AllListModel[];
+}
+@State<ListStateModel>({
     name: 'checkList',
     defaults: {
-        allList: [
-            {
-                title : 'hello list',
-                list: [
-                    {
-                        name: 'one hello list',
-                        content: 'This is one hello list'
-                    }
-                ]
-            }
-        ]
+        allList: []
     }
 })
 export class ListState{
     @Action(ListActions.AddList)
-    addList(ctx){
-        console.log(ctx);
+    addList({getState, patchState} : StateContext<ListStateModel>, {payload}: ListActions.AddList){
+        console.log(payload);
+        patchState({
+            allList : [...getState().allList, payload]
+        })
     }
 
     @Selector()
     static list(state){
-        console.log('state thing');
         return {
             list: ['cool', 'not cool']
         }

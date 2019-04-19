@@ -3,6 +3,7 @@ import { Store, Select } from '@ngxs/store';
 
 import { Observable } from 'rxjs';
 import * as ListActions from './../../store/actions';
+import { AddList } from './../../store/actions';
 
 @Component({
   selector: 'app-check-list',
@@ -21,7 +22,6 @@ export class CheckListComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit() {
-    this.store.dispatch(new ListActions.AddList("any"));
     this.store.select(state => state.checkList).subscribe(data => {
       this.list = data;
       console.log(this.list);
@@ -44,5 +44,9 @@ export class CheckListComponent implements OnInit {
   removeContent(id){
     id = id.replace(/\s/g,'');
     this.temp_list =  this.temp_list.filter(list => list.id !== id);
+  }
+
+  addTempList(){
+    this.store.dispatch(new AddList({ title: this.currentTitle, list: this.temp_list}));
   }
 }
