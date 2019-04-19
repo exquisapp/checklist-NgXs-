@@ -8,3 +8,13 @@ export class AddList{
 export class GetList {
     static readonly type = "[List] Get List";
 }
+
+export class DeleteList {
+    static readonly type = "[List] Delete List";
+    constructor(public payload: string){}
+}
+
+export class UpdateList {
+    static readonly type = "[List] Update List";
+    constructor(public payload: any){}
+}

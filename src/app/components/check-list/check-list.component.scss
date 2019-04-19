@@ -1,7 +1,22 @@
 .all-list-section{
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%
-    
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-gap: 20px;   
+}
+
+@media screen and (min-width: 540px) and (max-width: 990px){
+    .all-list-section{
+        display: grid;
+        grid-template-columns: 50% 50%
+        
+    }
+}
+
+@media screen and (max-width: 540px){
+    .all-list-section{
+        display: grid;
+        grid-template-columns: 100%;
+    }
 }
 
 .list-section{
@@ -16,7 +31,7 @@
     height: 60px;
     width: 60px;
     border-radius: 30px;
-    position: absolute;
+    position: fixed;
     bottom: 18px;
     right: 18px;
     color: #fff;
@@ -40,7 +55,7 @@
 
 .add-list-form{
     background: white;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     z-index: 2;
@@ -77,4 +92,8 @@
     }
     #content{
     }
+}
+.c-btns{
+    display: flex;
+    justify-content: space-between;
 }

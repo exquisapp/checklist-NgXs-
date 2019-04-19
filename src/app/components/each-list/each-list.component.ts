@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-each-list',
@@ -9,12 +9,19 @@ export class EachListComponent implements OnInit {
   @Input()
   public title;
 
+  @Output()
+  public eachListEvent = new EventEmitter();
+
   @Input()
   public list;
-  
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteList(){
+    this.eachListEvent.emit({message : 'DELETE', payload: this.list, title: this.title})
   }
 
 }

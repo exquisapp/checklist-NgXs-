@@ -3,7 +3,7 @@
 
   <section class="all-list-section">
     <ng-container *ngFor="let x of this.list">
-        <app-each-list [title]="x.title" [list]="x.list"></app-each-list>
+        <app-each-list (eachListEvent)="confirmDelete($event)" [title]="x.title" [list]="x.list"></app-each-list>
     </ng-container>
   </section>
 
@@ -49,4 +49,22 @@
       </div>
 
   </div>
+</ng-container>
+
+
+<ng-container *ngIf="showConfirmDelete">
+    <div class="overlay" (click)="_hideAll()">  
+    </div>
+    <div class="add-list-form">
+     <h3> Are you sure you wanna DELETE <b>{{currentTitleToBeDeleted}}??</b> </h3>
+     <div class="c-btns">
+        <button (click)="deleteList(true)" class="btn waves-effect waves-light" >
+            YES
+        </button>
+        <button (click)="deleteList(false)" class="btn waves-effect waves-light" >
+            NO
+        </button>
+     </div>
+ 
+    </div>
 </ng-container>

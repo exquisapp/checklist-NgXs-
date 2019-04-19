@@ -30,6 +30,11 @@ export class ListState{
         patchState({allList: this.storageService.getItems()});
     }
 
+    @Action(ListActions.UpdateList)
+    updateList({getState}){
+        this.storageService.updateList(getState().allList);
+    }
+
     @Action(ListActions.AddList)
     addList({getState, patchState} : StateContext<ListStateModel>, {payload}: ListActions.AddList){
 
@@ -39,6 +44,13 @@ export class ListState{
         })
         this.storageService.addItem(getState().allList);
 
+    }
+
+    @Action(ListActions.DeleteList)
+    removeList({getState, patchState, dispatch}: StateContext<ListStateModel>, {payload}: ListActions.DeleteList){
+        let allList = getState().allList.filter(list => list.title !== payload);
+        dispatch(new ListActions.UpdateList(getState().allList))
+        patchState({ allList })
     }
 
     @Selector()

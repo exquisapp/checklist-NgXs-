@@ -13,11 +13,15 @@ export class LStorageService {
 
   getItems(){
     // localStorage.clear();
-
     const list = JSON.parse(localStorage.getItem('CheckList'));
     if (!list){
       return []
     }
     return list;
+  }
+
+
+  updateList(list){
+    return localStorage.setItem('CheckList', JSON.stringify(list));
   }
 }

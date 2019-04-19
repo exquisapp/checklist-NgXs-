@@ -3,7 +3,7 @@ import { Store, Select } from '@ngxs/store';
 
 import { Observable } from 'rxjs';
 import * as ListActions from './../../store/actions';
-import { AddList } from './../../store/actions';
+import { AddList, DeleteList } from './../../store/actions';
 
 @Component({
   selector: 'app-check-list',
@@ -19,13 +19,17 @@ export class CheckListComponent implements OnInit {
   public currentTitle;
   public currentContent;
 
+  public currentTitleToBeDeleted;
+  public showConfirmDelete = false;
+  
   constructor(private store: Store) { }
 
   ngOnInit() {
     this.store.dispatch(new ListActions.GetList);
     this.store.select(state => state.checkList).subscribe(data => {
       this.list = data.allList;
-      console.log(this.list);
+      console.log(this
+        .list);
     })
   }
 
@@ -34,6 +38,7 @@ export class CheckListComponent implements OnInit {
   }
   _hideAll(){
     this.showAddList = false;
+    this.showConfirmDelete = false;
   }
   pushContent(){
     if (this.currentTitle && this.currentContent){
@@ -48,6 +53,25 @@ export class CheckListComponent implements OnInit {
   }
 
   addTempList(){
-    this.store.dispatch(new AddList({ title: this.currentTitle, list: this.temp_list}));
+    if (this.currentTitle){
+      this.store.dispatch(new AddList({ title: this.currentTitle, list: this.temp_list}));
+      this.temp_list = [];
+    }
+  }
+
+  confirmDelete(e){
+    this.currentTitleToBeDeleted = e.title;
+
+    this.showConfirmDelete = true;
+
+  }
+
+  deleteList(x: boolean){
+    console.log("delte fn");
+    if (x){
+      this.store.dispatch(new DeleteList(this.currentTitleToBeDeleted));
+    }
+    this.currentTitleToBeDeleted = "";
+    this._hideAll();
   }
 }

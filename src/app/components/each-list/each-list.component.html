@@ -1,6 +1,11 @@
 <div class="each-list">
   <h5>{{title}}</h5>
-  <ng-container *ngFor="let y of list">
-    <div>{{y.content}}</div>
-  </ng-container>
+  <div class="list-wrapper">
+      <ng-container *ngFor="let y of list">
+          <div>{{y.content}}</div>
+        </ng-container>
+  </div>
+  <div (click) = "deleteList()" class="remove-list-btn">
+      <i class="fas fa-minus"></i>
+  </div>
 </div>
