@@ -42,17 +42,19 @@
       </div>
         <div class="current-temp-list" *ngIf="temp_list.length > 0">
           <h3>Currently Added List</h3>
-          <ng-container *ngFor="let x of temp_list">
-            <div class="each-temp-list">
-                <div class="temp-content">
-                    {{x.content}}
-                  </div>
-                  <button (click)="removeContent(x.id)" class="btn waves-effect waves-light" >
-                      <i class="fas fa-minus"></i>
-                  </button>
-            </div>
-            
-          </ng-container>
+          <div class="each-tlist-wrapper">
+              <ng-container *ngFor="let x of temp_list">
+                  <div class="each-temp-list">
+                      <div class="temp-content">
+                          {{x.content}}
+                        </div>
+                        <button (click)="removeContent(x.id)" class="btn waves-effect waves-light" >
+                            <i class="fas fa-minus"></i>
+                        </button>
+                  </div>    
+              </ng-container>
+          </div>
+          
               
           <button (click)="addTempList()" class="btn waves-effect waves-light" >
             ADD LIST
