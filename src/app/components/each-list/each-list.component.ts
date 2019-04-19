@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-each-list',
@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./each-list.component.scss']
 })
 export class EachListComponent implements OnInit {
+  @Input()
+  public title;
 
+  @Input()
+  public list;
+  
   constructor() { }
 
   ngOnInit() {

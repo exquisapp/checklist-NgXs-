@@ -1,8 +1,14 @@
+.all-list-section{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%
+    
+}
+
 .list-section{
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+    padding: 20px;
 }
 
 .add-button{

@@ -8,7 +8,16 @@ export class LStorageService {
   constructor() { }
 
   addItem(list){
-    console.log('got here')
-    return localStorage.setItem('CheckList', list);
+    return localStorage.setItem('CheckList', JSON.stringify(list));
+  }
+
+  getItems(){
+    // localStorage.clear();
+
+    const list = JSON.parse(localStorage.getItem('CheckList'));
+    if (!list){
+      return []
+    }
+    return list;
   }
 }

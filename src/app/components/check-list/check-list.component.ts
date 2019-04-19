@@ -22,8 +22,9 @@ export class CheckListComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit() {
+    this.store.dispatch(new ListActions.GetList);
     this.store.select(state => state.checkList).subscribe(data => {
-      this.list = data;
+      this.list = data.allList;
       console.log(this.list);
     })
   }

@@ -4,3 +4,7 @@ export class AddList{
     static readonly type = "[List] Add List";
     constructor(public payload: ListAliases.AllListModel){}
 }
+
+export class GetList {
+    static readonly type = "[List] Get List";
+}

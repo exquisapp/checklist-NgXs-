@@ -1,3 +1,6 @@
-<p>
-  each-list works!
-</p>
+<div class="each-list">
+  <h5>{{title}}</h5>
+  <ng-container *ngFor="let y of list">
+    <div>{{y.content}}</div>
+  </ng-container>
+</div>

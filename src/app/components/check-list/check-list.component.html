@@ -1,7 +1,12 @@
 <section class="list-section">
+  <h4>Your List</h4>
 
-  <h3>Your List</h3>
-  <app-each-list></app-each-list>
+  <section class="all-list-section">
+    <ng-container *ngFor="let x of this.list">
+        <app-each-list [title]="x.title" [list]="x.list"></app-each-list>
+    </ng-container>
+  </section>
+
 </section>
 
 <div class="add-button" (click) = "_showAddList()">

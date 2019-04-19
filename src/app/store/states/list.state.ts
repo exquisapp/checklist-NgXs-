@@ -25,15 +25,20 @@ export interface ListStateModel {
 })
 export class ListState{
     constructor(private storageService: LStorageService){}
+    @Action(ListActions.GetList)
+    getList({ patchState }){
+        patchState({allList: this.storageService.getItems()});
+    }
 
     @Action(ListActions.AddList)
     addList({getState, patchState} : StateContext<ListStateModel>, {payload}: ListActions.AddList){
 
-        this.storageService.addItem(payload);
 
         patchState({
             allList : [...getState().allList, payload]
         })
+        this.storageService.addItem(getState().allList);
+
     }
 
     @Selector()
