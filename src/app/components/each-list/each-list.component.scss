@@ -7,6 +7,9 @@
     .list-wrapper{
         height: 140px;
         overflow-y: scroll;
+        .it{
+            cursor: pointer;
+        }
     }
     .remove-list-btn{
         background: #7f0082;
@@ -18,5 +21,10 @@
         cursor: pointer;
         justify-content: center;
         align-items: center;
+    }
+
+    fa-icon{
+        color: #7f0082;
+        font-size: 18px;
     }
 }

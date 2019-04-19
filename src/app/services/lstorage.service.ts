@@ -12,7 +12,6 @@ export class LStorageService {
   }
 
   getItems(){
-    // localStorage.clear();
     const list = JSON.parse(localStorage.getItem('CheckList'));
     if (!list){
       return []

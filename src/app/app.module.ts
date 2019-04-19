@@ -4,6 +4,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin'
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckListComponent } from './components/check-list/check-list.component';
@@ -29,6 +30,7 @@ import { EachListComponent } from './components/each-list/each-list.component';
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     FormsModule,
+    FontAwesomeModule,
     AppRoutingModule
     
   ],

@@ -18,3 +18,8 @@ export class UpdateList {
     static readonly type = "[List] Update List";
     constructor(public payload: any){}
 }
+
+export class CheckContentList {
+    static readonly type = "[List] Check List Content";
+    constructor(public title: string, public content: any){}
+}

@@ -4,10 +4,12 @@ import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { LStorageService } from './../../services/lstorage.service';
 
 import * as ListActions from '../actions';
+import { CheckContentList } from '../actions';
 
 export interface ListModel {
     id: string;
     content: string;
+    checked: boolean;
 }
 
 export interface AllListModel {
@@ -51,6 +53,21 @@ export class ListState{
         let allList = getState().allList.filter(list => list.title !== payload);
         dispatch(new ListActions.UpdateList(getState().allList))
         patchState({ allList })
+    }
+
+    @Action(ListActions.CheckContentList)
+    CheckContentList({ getState, patchState, dispatch } : StateContext<ListStateModel>, {title, content} : ListActions.CheckContentList){
+        let affectedList = getState().allList;
+
+        affectedList.forEach(con => {
+            con.list.forEach(c => {
+                if (c.id === content.id){
+                    c.checked = !c.checked;
+                }
+            })
+        })
+        dispatch(new ListActions.UpdateList(affectedList));
+        patchState({ allList: affectedList})
     }
 
     @Selector()

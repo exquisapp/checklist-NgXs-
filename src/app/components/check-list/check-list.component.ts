@@ -42,7 +42,7 @@ export class CheckListComponent implements OnInit {
   }
   pushContent(){
     if (this.currentTitle && this.currentContent){
-      this.temp_list.push({ content: this.currentContent, id: this.currentContent.replace(/\s/g,'')});
+      this.temp_list.push({ checked: false, content: this.currentContent, id: this.currentContent.replace(/\s/g,'')});
       this.currentContent = '';
     }
     
@@ -56,6 +56,8 @@ export class CheckListComponent implements OnInit {
     if (this.currentTitle){
       this.store.dispatch(new AddList({ title: this.currentTitle, list: this.temp_list}));
       this.temp_list = [];
+      this.currentTitle = '';
+
     }
   }
 
