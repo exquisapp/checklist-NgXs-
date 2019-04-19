@@ -1,6 +1,8 @@
 
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 
+import { LStorageService } from './../../services/lstorage.service';
+
 import * as ListActions from '../actions';
 
 export interface ListModel {
@@ -22,9 +24,13 @@ export interface ListStateModel {
     }
 })
 export class ListState{
+    constructor(private storageService: LStorageService){}
+
     @Action(ListActions.AddList)
     addList({getState, patchState} : StateContext<ListStateModel>, {payload}: ListActions.AddList){
-        console.log(payload);
+
+        this.storageService.addItem(payload);
+
         patchState({
             allList : [...getState().allList, payload]
         })

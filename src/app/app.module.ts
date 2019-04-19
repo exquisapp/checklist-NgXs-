@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckListComponent } from './components/check-list/check-list.component';
 import { FormsModule } from '@angular/forms';
+import { LStorageService } from './services/lstorage.service';
 
 import { ListState } from './store/states/list.state';
 import { NavComponent } from './components/nav/nav.component';
@@ -31,7 +32,7 @@ import { EachListComponent } from './components/each-list/each-list.component';
     AppRoutingModule
     
   ],
-  providers: [],
+  providers: [LStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
